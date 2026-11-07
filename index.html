@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoTogether · Dos sentencias, dos soluciones</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F6F2FD;
+      --surface-alt: #EDE5FA;
+      --border: #CDBDEB;
+      --text: #1E1233;
+      --text-muted: #5E5278;
+      --primary: #7B35D0;
+      --secondary: #E0568F;
+      --line: #6B5E8C;
+      --dec-bg: #E4E1FC; --dec-bd: #8A7CF0; --dec-tx: #2F2878;
+      --ok-bg: #DDF3EA; --ok-bd: #1F9D6B; --ok-tx: #0E5A3E;
+      --no-bg: #FBE1E5; --no-bd: #D63A4E; --no-tx: #8A1B2C;
+    }
+    
+    :root[data-theme="dark"] {
+      --bg: #14101F;
+      --surface: #1F1830;
+      --surface-alt: #2A2142;
+      --border: #463A6B;
+      --text: #F1ECFB;
+      --text-muted: #B8AED3;
+      --primary: #B38CF5;
+      --secondary: #F7A3C6;
+      --line: #9A8EC0;
+      --dec-bg: #2B2A5A; --dec-bd: #C0B4FA; --dec-tx: #E6E3FF;
+      --ok-bg: #153A2E; --ok-bd: #4FD1A1; --ok-tx: #BFF1DD;
+      --no-bg: #45202A; --no-bd: #FF7B8E; --no-tx: #FFD3DA;
+      color-scheme: dark;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 'Nunito', 'Segoe UI', system-ui, sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 24px 20px 56px; }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { height: 60px; width: auto; }
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-text strong { font-size: 1.2rem; color: var(--primary); }
+    .brand-text span { font-size: 0.85rem; color: var(--text-muted); }
+    
+    .theme-btn {
+      font: inherit; font-weight: 700; font-size: 0.9rem;
+      background: var(--surface); color: var(--text);
+      border: 1.5px solid var(--border); border-radius: 999px;
+      padding: 8px 16px; cursor: pointer; transition: all 0.2s;
+    }
+    .theme-btn:hover { border-color: var(--primary); }
+    
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin-bottom: 16px; }
+    .hero h1 .accent { color: var(--primary); }
+    .hero .lead { font-size: 1.15rem; color: var(--text-muted); max-width: 650px; margin: 0 auto; }
+    
+    .startup-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px 28px; margin-bottom: 48px;
+      display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+    }
+    .startup-card .info { flex: 1; min-width: 250px; }
+    .startup-card h2 { color: var(--primary); font-size: 1.4rem; margin-bottom: 8px; }
+    .startup-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 8px; }
+    .startup-card .origin { font-size: 0.85rem; font-weight: 700; color: var(--secondary); }
+    
+    section { margin-bottom: 56px; }
+    section h2 { font-size: 1.8rem; margin-bottom: 8px; }
+    section h2 .number { color: var(--primary); font-weight: 900; margin-right: 8px; }
+    section .section-lead { color: var(--text-muted); margin-bottom: 24px; max-width: 70ch; }
+    
+    .sentencia {
+      background: var(--surface-alt); border-left: 4px solid var(--primary);
+      border-radius: 8px; padding: 16px 20px; margin-bottom: 16px;
+      font-style: italic; color: var(--text);
+    }
+    .sentencia strong { font-style: normal; color: var(--primary); }
+    
+    .propuesta {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; margin-bottom: 24px;
+    }
+    .propuesta h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 12px; }
+    .propuesta p { color: var(--text); margin-bottom: 12px; }
+    .propuesta .benefit {
+      font-size: 0.95rem; color: var(--text-muted);
+      padding-left: 16px; border-left: 3px solid var(--secondary);
+    }
+    
+    .seg-btn { font-weight: 600; font-size: 0.85rem; background: var(--bg); color: var(--text); border: 1.5px solid var(--border); border-radius: 999px; padding: 6px 14px; cursor: pointer; transition: all 0.2s; }
+    .seg-btn:hover { border-color: var(--primary); }
+    .seg-btn[aria-checked="true"] { background: var(--primary); border-color: var(--primary); color: var(--bg); }
+
+    [data-r] { transition: opacity 0.2s; }
+    .panel[data-scn="adult"] [data-r]:not([data-r~="adult"]),
+    .panel[data-scn="mok"] [data-r]:not([data-r~="mok"]),
+    .panel[data-scn="mno"] [data-r]:not([data-r~="mno"]),
+    .panel[data-scn="nov"] [data-r]:not([data-r~="nov"]) { opacity: 0.22; }
+    
+    footer {
+      margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center; color: var(--text-muted); font-size: 0.9rem;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    
+    @media (max-width: 640px) {
+      header { justify-content: center; text-align: center; }
+      .startup-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="assets/logo-gotogether.png" alt="Logo GoTogether">
+        <div class="brand-text">
+          <strong>Hallows Code</strong>
+          <span>IFTS 29 · Front End · TP3</span>
+        </div>
+      </div>
+      <button class="theme-btn" id="themeBtn" type="button">🌙 Modo oscuro</button>
+    </header>
+    
+    <section class="hero">
+      <h1>Dos sentencias.<br><span class="accent">Dos soluciones.</span></h1>
+      <p class="lead">Un recorrido agéntico para <strong>GoTogether</strong>, la red que conecta fans del K-Pop para viajar juntos en transporte público.</p>
+    </section>
+    
+    <section class="startup-card">
+      <div class="info">
+        <h2>GoTogether</h2>
+        <p>Propuesta para coordinar grupos de viaje en transporte público entre fans del K-Pop. Startup creada por estudiantes del IFTS 16.</p>
+        <span class="origin">→ Origen: IFTS 16 · Bloques de lógica proposicional</span>
+      </div>
+    </section>
+    
+    <section>
+      <h2><span class="number">01</span>Las dos sentencias asignadas</h2>
+      <p class="section-lead">Estas son las reglas de funcionamiento de GoTogether que nuestro equipo recibió del docente. Las respetamos literalmente para proponer soluciones coherentes.</p>
+      
+      <div class="sentencia">
+        <strong>R3 · Sentencia 1:</strong> "Si el usuario es menor de edad y no consta autorización de su tutor, el sistema mantiene bloqueada su incorporación al grupo."
+      </div>
+      
+      <div class="sentencia">
+        <strong>R4 · Sentencia 2:</strong> "Si los datos del trayecto, la identidad y la edad están verificados y el usuario es mayor de edad o es menor con autorización de su tutor, el sistema habilita el paso de confirmación personal."
+      </div>
+    </section>
+    
+    <section>
+      <h2><span class="number">02</span>Nuestras propuestas agénticas</h2>
+      <p class="section-lead">Para cada sentencia, imaginamos qué haría un agente autónomo: qué datos consultaría, qué decisiones tomaría y cuándo pediría intervención humana.</p>
+      
+      <div class="propuesta">
+        <h3>Bloqueo inteligente de menores sin autorización</h3>
+        <p>Un agente encargado de validar la incorporación de nuevos viajeros consultaría la base de datos de usuarios, verificaría la edad del postulante y buscaría un registro de autorización del tutor. Si detecta que es menor de edad y no hay autorización, <strong>bloquea el avance</strong> y le muestra al usuario un mensaje claro para que pueda subir el permiso.</p>
+        <p class="benefit">Beneficio: cumple con la normativa de protección de menores sin intervención humana constante, evitando incorporaciones riesgosas.</p>
+      </div>
+      
+      <div class="propuesta">
+        <h3>Verificación previa para habilitar la confirmación</h3>
+        <p>Un agente de verificación consultaría los datos del trayecto, la identidad y la edad del usuario. Luego evaluaría si el usuario es mayor de edad o, si es menor, si cuenta con autorización del tutor. Solo si <strong>todas las condiciones se cumplen</strong>, habilita el botón de "Confirmación personal" y le muestra al usuario los detalles del viaje para que confirme.</p>
+        <p class="benefit">Beneficio: garantiza que solo usuarios verificados puedan confirmar su viaje, aumentando la seguridad de la red de GoTogether.</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 03: LOS FLUJOS (DIAGRAMAS) -->
+    <section>
+      <h2><span class="number">03</span>Los dos flujos agénticos</h2>
+      <p class="section-lead">Cada propuesta se representa con un diagrama de flujo. Podés hacer clic en los botones para resaltar un camino específico y ver los pasos detallados.</p>
+      
+      <!-- DIAGRAMA 1: REGLA DE MENORES -->
+      <div style="margin-bottom: 48px;">
+        <h3 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 8px;">Flujo 1: Regla de incorporación de menores</h3>
+        <p style="color: var(--text-muted); margin-bottom: 16px;">Una persona menor de edad solo puede unirse a un grupo si su tutor lo autoriza.</p>
+        
+        <div class="picker" style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: grid; gap: 12px;">
+          <div class="seg" id="seg1" role="radiogroup" aria-label="Camino a resaltar">
+            <button type="button" role="radio" aria-checked="true" data-s="all" class="seg-btn">Todos los caminos</button>
+            <button type="button" role="radio" aria-checked="false" data-s="adult" class="seg-btn">Mayor de edad</button>
+            <button type="button" role="radio" aria-checked="false" data-s="mok" class="seg-btn">Menor con autorización</button>
+            <button type="button" role="radio" aria-checked="false" data-s="mno" class="seg-btn">Menor sin autorización</button>
+          </div>
+          <ol class="steps" id="steps1" aria-live="polite" style="margin: 0; padding-left: 1.2em; color: var(--text-muted); font-size: 0.92rem; min-height: 3.2em;"></ol>
+        </div>
+        
+        <div class="panel" id="panel1" data-scn="all" style="margin-top: 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto;">
+          <svg viewBox="0 0 780 460" role="img" aria-label="Se pregunta si es menor de edad. Si no lo es, puede avanzar. Si lo es, se pregunta si tiene autorización del tutor: con autorización avanza, sin ella se bloquea la incorporación al grupo." style="display: block; width: 100%; min-width: 640px; height: auto; padding: 8px;">
+            <defs><marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path style="fill: var(--line);" d="M0 0L10 5L0 10z"/></marker></defs>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="adult" d="M270 80H130V299" marker-end="url(#ar1)"/>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="mok mno" d="M380 130V250H447" marker-end="url(#ar1)"/>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="mok" d="M560 300V330H228" marker-end="url(#ar1)"/>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="mno" d="M670 250H700V379" marker-end="url(#ar1)"/>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="adult" x="200" y="71" text-anchor="middle">NO</text>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="mok mno" x="392" y="196">SÍ</text>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="mok" x="574" y="323">SÍ</text>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="mno" x="684" y="242">NO</text>
+            <g data-r="adult mok mno"><polygon style="fill: var(--dec-bg); stroke: var(--dec-bd); stroke-width: 1.75; stroke-linejoin: round;" points="270,80 380,30 490,80 380,130"/>
+              <text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="380" y="77">¿Es menor</text><text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="380" y="95">de edad?</text></g>
+            <g data-r="mok mno"><polygon style="fill: var(--dec-bg); stroke: var(--dec-bd); stroke-width: 1.75; stroke-linejoin: round;" points="450,250 560,200 670,250 560,300"/>
+              <text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="560" y="247">¿Tiene autorización</text><text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="560" y="265">del tutor?</text></g>
+            <g data-r="adult mok"><rect style="fill: var(--ok-bg); stroke: var(--ok-bd); stroke-width: 1.75;" x="35" y="302" width="190" height="56" rx="12"/>
+              <text style="fill: var(--ok-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="130" y="335">✓ Permitir avanzar</text></g>
+            <g data-r="mno"><rect style="fill: var(--no-bg); stroke: var(--no-bd); stroke-width: 1.75;" x="540" y="382" width="200" height="56" rx="12"/>
+              <text style="fill: var(--no-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="640" y="407">✕ Bloquear incorporación</text><text style="fill: var(--no-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="640" y="424">al grupo</text></g>
+          </svg>
+        </div>
+        
+        <details style="margin-top: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+          <summary style="font-weight: 700; cursor: pointer; color: var(--primary);">Ver detalles técnicos del Flujo 1</summary>
+          <div style="margin-top: 16px; color: var(--text); line-height: 1.6;">
+            <p><strong>Datos de entrada:</strong> Fecha de nacimiento del usuario, estado de autorización del tutor.</p>
+            <p><strong>Condición:</strong> ¿Es menor de edad? (Sí/No). Si es Sí: ¿Tiene autorización del tutor? (Sí/No).</p>
+            <p><strong>Acción:</strong> Si es mayor o menor con autorización: permitir avanzar. Si es menor sin autorización: bloquear incorporación.</p>
+            <p><strong>Resultado:</strong> El usuario avanza al siguiente paso o se le impide unirse al grupo.</p>
+          </div>
+        </details>
+      </div>
+      
+      <!-- DIAGRAMA 2: VERIFICACIÓN Y CONFIRMACIÓN -->
+      <div style="margin-bottom: 48px;">
+        <h3 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 8px;">Flujo 2: Verificación previa a la confirmación</h3>
+        <p style="color: var(--text-muted); margin-bottom: 16px;">El paso de confirmación personal solo se habilita si los datos están verificados y, en el caso de menores, si hay autorización del tutor.</p>
+        
+        <div class="picker" style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: grid; gap: 12px;">
+          <div class="seg" id="seg2" role="radiogroup" aria-label="Camino a resaltar">
+            <button type="button" role="radio" aria-checked="true" data-s="all" class="seg-btn">Todos los caminos</button>
+            <button type="button" role="radio" aria-checked="false" data-s="nov" class="seg-btn">Datos sin verificar</button>
+            <button type="button" role="radio" aria-checked="false" data-s="adult" class="seg-btn">Mayor de edad</button>
+            <button type="button" role="radio" aria-checked="false" data-s="mok" class="seg-btn">Menor con autorización</button>
+            <button type="button" role="radio" aria-checked="false" data-s="mno" class="seg-btn">Menor sin autorización</button>
+          </div>
+          <ol class="steps" id="steps2" aria-live="polite" style="margin: 0; padding-left: 1.2em; color: var(--text-muted); font-size: 0.92rem; min-height: 4.8em;"></ol>
+        </div>
+        
+        <div class="panel" id="panel2" data-scn="all" style="margin-top: 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto;">
+          <svg viewBox="0 0 800 620" role="img" aria-label="Si el trayecto, la identidad y la edad no están verificados, se detiene el proceso y se solicita revisión de datos. Si lo están, se pregunta si el usuario es mayor de edad: si lo es, se habilita la confirmación personal. Si no, se pregunta por la autorización del tutor: con ella se habilita la confirmación personal, sin ella se detiene el paso de confirmación." style="display: block; width: 100%; min-width: 640px; height: auto; padding: 8px;">
+            <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path style="fill: var(--line);" d="M0 0L10 5L0 10z"/></marker></defs>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="nov" d="M320 80H477" marker-end="url(#ar2)"/>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="adult mok mno" d="M200 132V195" marker-end="url(#ar2)"/>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="adult" d="M320 250H477" marker-end="url(#ar2)"/>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="mok mno" d="M200 302V365" marker-end="url(#ar2)"/>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="mok" d="M320 420H620V285" marker-end="url(#ar2)"/>
+            <path style="fill: none; stroke: var(--line); stroke-width: 2;" data-r="mno" d="M200 472V517" marker-end="url(#ar2)"/>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="nov" x="400" y="72" text-anchor="middle">NO</text>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="adult mok mno" x="212" y="170">SÍ</text>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="adult" x="400" y="242" text-anchor="middle">SÍ</text>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="mok mno" x="212" y="340">NO</text>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="mok" x="400" y="412" text-anchor="middle">SÍ</text>
+            <text style="fill: var(--text); font: 700 12px Nunito, 'Segoe UI', system-ui, sans-serif; letter-spacing: .05em; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;" data-r="mno" x="212" y="500">NO</text>
+            <g data-r="nov adult mok mno"><polygon style="fill: var(--dec-bg); stroke: var(--dec-bd); stroke-width: 1.75; stroke-linejoin: round;" points="80,80 200,28 320,80 200,132"/>
+              <text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="200" y="77">¿Trayecto, identidad</text><text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="200" y="95">y edad verificados?</text></g>
+            <g data-r="adult mok mno"><polygon style="fill: var(--dec-bg); stroke: var(--dec-bd); stroke-width: 1.75; stroke-linejoin: round;" points="80,250 200,198 320,250 200,302"/>
+              <text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="200" y="247">¿El usuario es</text><text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="200" y="265">mayor de edad?</text></g>
+            <g data-r="mok mno"><polygon style="fill: var(--dec-bg); stroke: var(--dec-bd); stroke-width: 1.75; stroke-linejoin: round;" points="80,420 200,368 320,420 200,472"/>
+              <text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="200" y="417">¿Tiene autorización</text><text style="fill: var(--dec-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="200" y="435">del tutor?</text></g>
+            <g data-r="nov"><rect style="fill: var(--no-bg); stroke: var(--no-bd); stroke-width: 1.75;" x="480" y="48" width="290" height="64" rx="12"/>
+              <text style="fill: var(--no-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="625" y="77">✕ Detener proceso</text><text style="fill: var(--no-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="625" y="95">Solicitar revisión de datos</text></g>
+            <g data-r="adult mok"><rect style="fill: var(--ok-bg); stroke: var(--ok-bd); stroke-width: 1.75;" x="480" y="218" width="290" height="64" rx="12"/>
+              <text style="fill: var(--ok-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="625" y="247">✓ Habilitar paso de</text><text style="fill: var(--ok-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="625" y="265">confirmación personal</text></g>
+            <g data-r="mno"><rect style="fill: var(--no-bg); stroke: var(--no-bd); stroke-width: 1.75;" x="85" y="520" width="230" height="64" rx="12"/>
+              <text style="fill: var(--no-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="200" y="549">✕ Detener paso</text><text style="fill: var(--no-tx); font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif; text-anchor: middle;" x="200" y="567">de confirmación</text></g>
+          </svg>
+        </div>
+        
+        <details style="margin-top: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+          <summary style="font-weight: 700; cursor: pointer; color: var(--primary);">Ver detalles técnicos del Flujo 2</summary>
+          <div style="margin-top: 16px; color: var(--text); line-height: 1.6;">
+            <p><strong>Datos de entrada:</strong> Estado de verificación del trayecto, identidad y edad. Mayoría de edad (Sí/No). Autorización del tutor (Sí/No).</p>
+            <p><strong>Condición:</strong> ¿Trayecto, identidad y edad verificados? Si No: detener. Si Sí: ¿Es mayor de edad? Si Sí: habilitar. Si No: ¿Tiene autorización del tutor? Si Sí: habilitar. Si No: detener.</p>
+            <p><strong>Acción:</strong> Habilitar el paso de confirmación personal o detenerlo según corresponda.</p>
+            <p><strong>Resultado:</strong> El usuario puede confirmar su viaje o se le indica que corrija los datos faltantes.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <p><strong>Hallows Code</strong> · IFTS 29 · Desarrollo de Sistemas Web (Front End) · 2° Cuatrimestre 2026</p>
+      <p style="margin-top: 8px;">TP3: Dos sentencias, dos soluciones · Startup asignada: GoTogether</p>
+      <p style="margin-top: 8px;"><a href="https://github.com/mendez-daniela/tp3-gotogether" target="_blank">Ver repositorio en GitHub</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeBtn.textContent = isDark ? '🌙 Modo oscuro' : '☀️ Modo claro';
+    });
+
+    // --- INTERACTIVIDAD DE LOS DIAGRAMAS ---
+    
+    var panel1 = document.getElementById('panel1');
+    var steps1 = document.getElementById('steps1');
+    var texts1 = {
+      all: ['Elige un camino para ver sus pasos.'],
+      adult: ['<b>¿Es menor de edad?</b> No.', '<b>Resultado:</b> permitir avanzar. No se pide autorización.'],
+      mok: ['<b>¿Es menor de edad?</b> Sí.', '<b>¿Tiene autorización del tutor?</b> Sí.', '<b>Resultado:</b> permitir avanzar.'],
+      mno: ['<b>¿Es menor de edad?</b> Sí.', '<b>¿Tiene autorización del tutor?</b> No.', '<b>Resultado:</b> bloquear la incorporación al grupo.']
+    };
+    function setScn1(s) {
+      panel1.setAttribute('data-scn', s);
+      steps1.innerHTML = texts1[s].map(function (t) { return '<li>' + t + '</li>'; }).join('');
+      steps1.style.listStyle = s === 'all' ? 'none' : '';
+      steps1.style.paddingLeft = s === 'all' ? '0' : '';
+      document.querySelectorAll('#seg1 button').forEach(function (b) {
+        b.setAttribute('aria-checked', b.getAttribute('data-s') === s ? 'true' : 'false');
+      });
+    }
+    document.getElementById('seg1').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (b) setScn1(b.getAttribute('data-s'));
+    });
+    setScn1('all');
+
+    var panel2 = document.getElementById('panel2');
+    var steps2 = document.getElementById('steps2');
+    var Q1 = '<b>¿Trayecto, identidad y edad verificados?</b> ';
+    var texts2 = {
+      all: ['Elige un camino para ver sus pasos.'],
+      nov: [Q1 + 'No.', '<b>Resultado:</b> detener el proceso y solicitar revisión de datos.'],
+      adult: [Q1 + 'Sí.', '<b>¿El usuario es mayor de edad?</b> Sí.', '<b>Resultado:</b> habilitar el paso de confirmación personal.'],
+      mok: [Q1 + 'Sí.', '<b>¿El usuario es mayor de edad?</b> No.', '<b>¿Tiene autorización del tutor?</b> Sí.', '<b>Resultado:</b> habilitar el paso de confirmación personal.'],
+      mno: [Q1 + 'Sí.', '<b>¿El usuario es mayor de edad?</b> No.', '<b>¿Tiene autorización del tutor?</b> No.', '<b>Resultado:</b> detener el paso de confirmación.']
+    };
+    function setScn2(s) {
+      panel2.setAttribute('data-scn', s);
+      steps2.innerHTML = texts2[s].map(function (t) { return '<li>' + t + '</li>'; }).join('');
+      steps2.style.listStyle = s === 'all' ? 'none' : '';
+      steps2.style.paddingLeft = s === 'all' ? '0' : '';
+      document.querySelectorAll('#seg2 button').forEach(function (b) {
+        b.setAttribute('aria-checked', b.getAttribute('data-s') === s ? 'true' : 'false');
+      });
+    }
+    document.getElementById('seg2').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (b) setScn2(b.getAttribute('data-s'));
+    });
+    setScn2('all');
+  </script>
+</body>
+</html>
