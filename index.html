@@ -46,7 +46,7 @@
       </div>
       
       <div class="sentencia">
-        <strong>R4 · Sentencia 2:</strong> "Si los datos del trayecto, la identidad y la edad están verificados y el usuario es mayor de edad o es menor con autorización de su tutor, el sistema habilita el paso de confirmación personal."
+        <strong>R4 · Sentencia 2:</strong> "Si los datos del trayecto, la identidad y la edad están verificados y el usuario es mayor de edad o es menor con autorización de su tutor, el sistema habilita el paso de confirmación personal. La alternativa por edad se exige junto con todas las verificaciones anteriores."
       </div>
     </section>
     
@@ -112,10 +112,11 @@
         <details>
           <summary>Ver detalles técnicos del Flujo 1</summary>
           <div class="detail-body">
-            <p><strong>Datos de entrada:</strong> Fecha de nacimiento del usuario, estado de autorización del tutor.</p>
-            <p><strong>Condición:</strong> ¿Es menor de edad? (Sí/No). Si es Sí: ¿Tiene autorización del tutor? (Sí/No).</p>
-            <p><strong>Acción:</strong> Si es mayor o menor con autorización: permitir avanzar. Si es menor sin autorización: bloquear incorporación.</p>
-            <p><strong>Resultado:</strong> El usuario avanza al siguiente paso o se le impide unirse al grupo.</p>
+            <p><strong>Datos de entrada:</strong> Fecha de nacimiento del usuario, estado de autorización del tutor (Presente / Ausente).</p>
+            <p><strong>Condición:</strong> Es menor de edad Y NO consta autorización de su tutor.</p>
+            <p><strong>Acción:</strong> Si es mayor o menor con autorización: permitir avanzar. Si es menor sin autorización: bloquear incorporación al grupo.</p>
+            <p><strong>Resultado:</strong> El usuario avanza al siguiente paso o se mantiene bloqueada su incorporación a la comunidad de viaje.</p>
+            <p><strong>Caso límite / Intervención humana:</strong> Si el tutor afirma haber firmado pero el sistema no refleja la autorización, el agente deriva la solicitud a revisión manual con soporte al cliente para verificar la documentación física o digital.</p>
           </div>
         </details>
       </div>
@@ -169,10 +170,11 @@
         <details>
           <summary>Ver detalles técnicos del Flujo 2</summary>
           <div class="detail-body">
-            <p><strong>Datos de entrada:</strong> Estado de verificación del trayecto, identidad y edad. Mayoría de edad (Sí/No). Autorización del tutor (Sí/No).</p>
-            <p><strong>Condición:</strong> ¿Trayecto, identidad y edad verificados? Si No: detener. Si Sí: ¿Es mayor de edad? Si Sí: habilitar. Si No: ¿Tiene autorización del tutor? Si Sí: habilitar. Si No: detener.</p>
-            <p><strong>Acción:</strong> Habilitar el paso de confirmación personal o detenerlo según corresponda.</p>
-            <p><strong>Resultado:</strong> El usuario puede confirmar su viaje o se le indica que corrija los datos faltantes.</p>
+            <p><strong>Datos de entrada:</strong> Estado de verificación del trayecto (Verificado / No verificado), estado de verificación de la identidad, estado de verificación de la edad, condición de mayoría de edad y registro de autorización tutelar.</p>
+            <p><strong>Condición:</strong> Trayecto verificado Y Identidad verificada Y Edad verificada Y (Es mayor de edad O [Es menor Y tiene autorización del tutor]).</p>
+            <p><strong>Acción:</strong> Habilitar el paso de confirmación personal o detener el proceso solicitando revisión según corresponda.</p>
+            <p><strong>Resultado:</strong> El usuario puede confirmar su viaje y asegurar su lugar, o se le indica corregir los datos faltantes.</p>
+            <p><strong>Caso límite / Intervención humana:</strong> Si falta la verificación del trayecto por fallas de GPS o discrepancia de datos cartográficos, el agente suspende la habilitación automática y requiere que un moderador humano apruebe el punto de encuentro manualmente.</p>
           </div>
         </details>
       </div>

@@ -63,6 +63,7 @@ header {
   padding: 8px 16px; cursor: pointer; transition: all 0.2s;
 }
 .theme-btn:hover { border-color: var(--primary); }
+.theme-btn:focus-visible { outline: 2.5px solid var(--primary); outline-offset: 2px; }
 
 .hero { text-align: center; margin-bottom: 48px; }
 .hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin-bottom: 16px; }
@@ -105,6 +106,7 @@ section .section-lead { color: var(--text-muted); margin-bottom: 24px; max-width
 .seg-btn { font-weight: 600; font-size: 0.85rem; background: var(--bg); color: var(--text); border: 1.5px solid var(--border); border-radius: 999px; padding: 6px 14px; cursor: pointer; transition: all 0.2s; }
 .seg-btn:hover { border-color: var(--primary); }
 .seg-btn[aria-checked="true"] { background: var(--primary); border-color: var(--primary); color: var(--bg); }
+.seg-btn:focus-visible { outline: 2.5px solid var(--secondary); outline-offset: 2px; }
 
 [data-r] { transition: opacity 0.2s; }
 .panel[data-scn="adult"] [data-r]:not([data-r~="adult"]),
@@ -117,8 +119,9 @@ footer {
   border-top: 1px solid var(--border);
   text-align: center; color: var(--text-muted); font-size: 0.9rem;
 }
-footer a { color: var(--primary); text-decoration: none; }
+footer a { color: var(--primary); text-decoration: none; border-radius: 2px; }
 footer a:hover { text-decoration: underline; }
+footer a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
 @media (max-width: 640px) {
   header { justify-content: center; text-align: center; }
@@ -242,6 +245,12 @@ footer a:hover { text-decoration: underline; }
   font-weight: 700;
   cursor: pointer;
   color: var(--primary);
+  border-radius: 4px;
+}
+
+.flow summary:focus-visible {
+  outline: 2.5px solid var(--primary);
+  outline-offset: 4px;
 }
 
 .detail-body {
