@@ -36,7 +36,7 @@ GoTogether propone coordinar viajes en transporte público entre fans del K-pop.
 | --- | --- | --- | --- | --- |
 | Alejandro Ramos | Codex | GPT-6 Astra | Revisión del README según la consigna y organización de los estilos de la landing. | Ajustar el formato del README, corregir inconsistencias y separar los estilos de `index.html` en `styles.css`. |
 | Daniela Méndez | Pendiente de confirmar | DeepSeek-V4.1-Flash-1017 | Construcción de la landing por etapas a partir de las fichas y los diagramas. | [Registrar una corrección solicitada durante el desarrollo.] |
-| [Juan Pablo](https://github.com/JPFinal) | Antigravity | Gemini 3.8 Flash | Auditoría de calidad de interfaz en Desktop, diseño de matriz de pruebas, validación de accesibilidad por teclado y verificación de coherencia lógica contra la rúbrica. | Reportar e integrar casos límite de intervención humana en desplegables, restaurar texto completo de R4 y añadir estilos de foco accesible (`:focus-visible`). |
+| Juan Pablo | Antigravity | Gemini 3.8 Flash | Auditoría de calidad de interfaz en Desktop, diseño de matriz de pruebas, validación de accesibilidad por teclado y verificación de coherencia lógica contra la rúbrica. | Reportar e integrar casos límite de intervención humana en desplegables, restaurar texto completo de R4 y añadir estilos de foco accesible (`:focus-visible`). |
 
 ### Una iteración de la landing
 
@@ -64,7 +64,7 @@ Juan Pablo elevó estas observaciones en un reporte formal a Daniela Méndez (Op
 <a id="auditoria-qa"></a>
 ## Auditoría de Calidad (QA) y Accesibilidad Desktop
 
-**Responsable:** Juan Pablo ([@JPFinal](https://github.com/JPFinal))  
+**Responsable:** Juan Pablo  
 **Entorno de prueba:** Desktop (Microsoft Edge / Google Chrome en Windows)  
 **Herramienta de asistencia IA:** Antigravity (Modelo: Gemini 3.8 Flash)
 
