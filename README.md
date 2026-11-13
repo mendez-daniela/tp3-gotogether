@@ -37,6 +37,7 @@ GoTogether propone coordinar viajes en transporte público entre fans del K-pop.
 | Alejandro Ramos | Codex | GPT-6 Astra | Revisión del README según la consigna y organización de los estilos de la landing. | Ajustar el formato del README, corregir inconsistencias y separar los estilos de `index.html` en `styles.css`. |
 | Daniela Méndez | Pendiente de confirmar | DeepSeek-V4.1-Flash-1017 | Construcción de la landing por etapas a partir de las fichas y los diagramas. | [Registrar una corrección solicitada durante el desarrollo.] |
 | Juan Pablo | Antigravity | Gemini 3.8 Flash | Auditoría de calidad de interfaz en Desktop, diseño de matriz de pruebas, validación de accesibilidad por teclado y verificación de coherencia lógica contra la rúbrica. | Reportar e integrar casos límite de intervención humana en desplegables, restaurar texto completo de R4 y añadir estilos de foco accesible (`:focus-visible`). |
+| Sol Prinzen | Gemini (Google AI Plus) | Gemini 2.5 Pro | Organización y división de roles del equipo, desglose lógico de las sentencias R3 y R4, redacción de fichas técnicas y modelado de flujos en texto. | Organizar la división de tareas del equipo en 5 roles claros y desglosar los flujos de decisión pregunta por pregunta (en cascada) para facilitar el diseño de los diagramas. |
 
 ### Una iteración de la landing
 
