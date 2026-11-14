@@ -41,19 +41,21 @@ En los diagramas, los bordes y las flechas punteados marcan lo que agrega el gru
 
 ## Integrantes y aportes
 
+Todas las personas del equipo trabajaron como operadoras agénticas: cada una dirigió a un agente de IA sobre una parte del trabajo, y el rol indica cuál.
+
 | Integrante | Rol | Tarea asignada |
 | --- | --- | --- |
-| [Sol Prinzen](https://github.com/solprinz) | Análisis y lógica | Desglosar R3 y R4 en dos fichas con los datos de entrada, las condiciones, las consecuencias y una explicación de cada regla. |
-| [Lucas Eliel Sosa](https://github.com/Strashoy) | Diseño de diagramas | Convertir las fichas de Sol en dos diagramas de flujo con pasos, flechas y una excepción por flujo, indicando cuándo corresponde la intervención humana. |
-| [Daniela Méndez](https://github.com/mendez-daniela) | Operación agéntica | Usar los textos de Sol y los diagramas de Lucas para guiar al agente de programación por etapas, subir el código a GitHub y publicar la landing. |
-| [Juan Pablo](https://github.com/JPFinal) | Pruebas de calidad (QA) | Auditoría de interfaz en versión Desktop, prueba de navegación/desplegables con teclado/clic y reporte de iteraciones y mejoras de QA. ([Ver informe de auditoría ↓](#auditoria-qa)) |
-| [Alejandro Ramos](https://github.com/AleR25) | Documentación | Redactar el README, registrar los aportes y las herramientas de IA del equipo y documentar una iteración con el pedido de mejora y su resultado. |
+| [Sol Prinzen](https://github.com/solprinz) | Operadora agéntica de lógica y análisis técnico | Desglosar R3 y R4 en dos fichas con los datos de entrada, las condiciones, las consecuencias y una explicación de cada regla. |
+| [Lucas Eliel Sosa](https://github.com/Strashoy) | Operador agéntico de diagramas e interacción | Convertir las fichas de Sol en dos diagramas de flujo interactivos, con pasos, flechas, un selector de escenarios y una excepción por flujo que indica cuándo corresponde la intervención humana. |
+| [Daniela Méndez](https://github.com/mendez-daniela) | Operadora agéntica de código y desarrollo front end | Usar los textos de Sol y los diagramas de Lucas para guiar al agente de programación por etapas, subir el código a GitHub y publicar la landing. |
+| [Juan Pablo](https://github.com/JPFinal) | Operador agéntico de testing | Auditoría de interfaz en versión Desktop, prueba de navegación/desplegables con teclado/clic y reporte de iteraciones y mejoras de QA. ([Ver informe de auditoría ↓](#auditoria-qa)) |
+| [Alejandro Ramos](https://github.com/AleR25) | Operador agéntico de documentación | Redactar el README, registrar los aportes y las herramientas de IA del equipo y documentar una iteración con el pedido de mejora y su resultado. |
 
 ## Construcción con IA
 
 | Integrante | Aplicación | Modelo | Uso en el TP3 | Cambios solicitados |
 | --- | --- | --- | --- | --- |
-| Lucas Eliel Sosa | Claude Code (aplicación de escritorio de Claude) | Claude Sonnet 5.5 | Uso de las fichas de Sol y del trabajo previo como contexto. Escritura directa de los dos diagramas de flujo como SVG, sin herramientas de modelado ni conectores externos. Paleta de colores derivada del logo de la startup. Componente interactivo con selector de escenarios, en lugar de un dibujo fijo para replicar. Exportación a SVG y PNG para documentos. Ajustes de la landing según la rúbrica: logo legible, bloque asignado, decisiones del grupo, revisión humana en los diagramas y navegación. | Plan de colores a partir del logo; exploración de seis formatos para exponer la lógica y elección del diagrama de flujo; selector de escenarios con resaltado del recorrido; SVG y PNG en modo claro; páginas que abren en modo claro; logo más grande en la tarjeta de la startup; bloque asignado visible; nodo de revisión humana y marcas de decisión del grupo en los dos diagramas; índice de secciones. |
+| Lucas Eliel Sosa | Claude Code (aplicación de escritorio de Claude) | Claude Sonnet 5.5 | Uso de las fichas de Sol y del trabajo previo como contexto. Escritura directa de los dos diagramas de flujo como SVG, sin herramientas de modelado ni conectores externos. Paleta de colores derivada del logo de la startup. Componente interactivo con selector de escenarios, en lugar de un dibujo fijo para replicar. Exportación a SVG y PNG para documentos. Ajustes de la landing según la rúbrica: logo legible, bloque asignado, decisiones del grupo, revisión humana en los diagramas y navegación. | Plan de colores a partir del logo; exploración de seis formatos para exponer la lógica y elección del diagrama de flujo; selector de escenarios con resaltado del recorrido; SVG y PNG en modo claro; páginas que abren en modo claro; logo grande al inicio de la página; bloque asignado visible; nodo de revisión humana y marcas de decisión del grupo en los dos diagramas; índice de secciones. |
 | Alejandro Ramos | Codex | GPT-6 Astra | Revisión del README según la consigna y organización de los estilos de la landing. | Ajustar el formato del README, corregir inconsistencias y separar los estilos de `index.html` en `styles.css`. |
 | Daniela Méndez | Pendiente de confirmar | DeepSeek-V4.1-Flash-1017 | Construcción de la landing por etapas a partir de las fichas y los diagramas. Actualización del código a partir del informe de QA. Publicación en GitHub y Vercel. | Primera versión de la landing con diagramas interactivos y desplegables. Restitución de la frase final de R4 («La alternativa por edad se exige junto con todas las verificaciones anteriores.») y casos límite con intervención humana en los desplegables, a partir del informe de QA. |
 | Juan Pablo | Antigravity | Gemini 3.8 Flash | Auditoría de calidad de interfaz en Desktop, diseño de matriz de pruebas, validación de accesibilidad por teclado y verificación de coherencia lógica contra la rúbrica. | Reportar e integrar casos límite de intervención humana en desplegables, restaurar texto completo de R4 y añadir estilos de foco accesible (`:focus-visible`). |
@@ -73,12 +75,12 @@ Probamos la versión local en Microsoft Edge. Comprobamos que la página cargaba
 
 ### Iteración colaborativa a partir del control de QA
 
-Durante la revisión de calidad en computadora (Desktop) sobre la versión publicada, el área de QA (Juan Pablo) auditó la interfaz, los flujos interactivos y los desplegables contra la rúbrica oficial. Se detectaron tres aspectos a mejorar:
+Durante la revisión de calidad en computadora (Desktop) sobre la versión publicada, el operador agéntico de testing (Juan Pablo) auditó la interfaz, los flujos interactivos y los desplegables contra la rúbrica oficial. Se detectaron tres aspectos a mejorar:
 1. La sentencia original R4 estaba incompleta (faltaba la frase condicionante final).
 2. Los desplegables técnicos omitían los casos de excepción y derivación a intervención humana.
 3. Los botones de selección de caminos carecían de indicador de foco visible al navegar exclusivamente con teclado.
 
-Juan Pablo elevó estas observaciones en un reporte formal a Daniela Méndez (Operación Agéntica). Se instruyó al agente a actualizar `index.html` y `styles.css`, subsanando los puntos observados. Posteriormente, QA realizó una re-evaluación verificando el cierre satisfactorio de todos los casos de prueba.
+Juan Pablo elevó estas observaciones en un reporte formal a Daniela Méndez (operadora agéntica de código y desarrollo front end). Se instruyó al agente a actualizar `index.html` y `styles.css`, subsanando los puntos observados. Posteriormente, Juan Pablo realizó una re-evaluación verificando el cierre satisfactorio de todos los casos de prueba.
 
 ### Del diagrama estático al componente interactivo
 

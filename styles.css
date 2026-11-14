@@ -283,11 +283,11 @@ section, .flow { scroll-margin-top: 16px; }
 .index a:hover { background: var(--surface-alt); }
 .index a:focus-visible { outline: 2.5px solid var(--primary); outline-offset: 2px; }
 
-.startup-logo {
-  flex: 0 0 auto; background: #FFFFFF; border: 1px solid var(--border);
-  border-radius: 12px; padding: 12px;
+.hero-logo {
+  display: inline-block; background: #FFFFFF; border: 1px solid var(--border);
+  border-radius: 16px; padding: 16px 20px; margin-bottom: 24px;
 }
-.startup-logo img { display: block; width: 280px; max-width: 100%; height: auto; }
+.hero-logo img { display: block; width: 300px; max-width: 100%; height: auto; }
 
 .facts {
   list-style: none; margin-top: 12px; display: grid; gap: 4px;
