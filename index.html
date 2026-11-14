@@ -15,29 +15,42 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <img src="assets/logo-gotogether.png" alt="Logo GoTogether">
         <div class="brand-text">
           <strong>Hallows Code</strong>
           <span>IFTS 29 · Front End · TP3</span>
         </div>
       </div>
+      <nav class="index" aria-label="Secciones de la página">
+        <a href="#sentencias">Sentencias</a>
+        <a href="#propuestas">Propuestas</a>
+        <a href="#flujo-1">Flujo 1</a>
+        <a href="#flujo-2">Flujo 2</a>
+      </nav>
       <button class="theme-btn" id="themeBtn" type="button">🌙 Modo oscuro</button>
     </header>
     
+    <main>
     <section class="hero">
       <h1>Dos sentencias.<br><span class="accent">Dos soluciones.</span></h1>
       <p class="lead">Un recorrido agéntico para <strong>GoTogether</strong>, la red que conecta fans del K-Pop para viajar juntos en transporte público.</p>
     </section>
     
     <section class="startup-card">
+      <div class="startup-logo">
+        <img src="assets/logo-gotogether.png" alt="Logo de GoTogether: un corazón con un símbolo de infinito y el nombre de la startup" width="361" height="266">
+      </div>
       <div class="info">
         <h2>GoTogether</h2>
         <p>Propuesta para coordinar grupos de viaje en transporte público entre fans del K-Pop. Startup creada por estudiantes del IFTS 16.</p>
-        <span class="origin">→ Origen: IFTS 16 · Bloques de lógica proposicional</span>
+        <ul class="facts">
+          <li><strong>Equipo:</strong> Grupo 20 · Hallows Code (IFTS 29)</li>
+          <li><strong>Bloque asignado:</strong> Autorización (S09-B)</li>
+          <li><strong>Origen:</strong> IFTS 16 · Bloques de lógica proposicional</li>
+        </ul>
       </div>
     </section>
     
-    <section>
+    <section id="sentencias">
       <h2><span class="number">01</span>Las dos sentencias asignadas</h2>
       <p class="section-lead">Estas son las reglas de funcionamiento de GoTogether que nuestro equipo recibió del docente. Las respetamos literalmente para proponer soluciones coherentes.</p>
       
@@ -50,7 +63,7 @@
       </div>
     </section>
     
-    <section>
+    <section id="propuestas">
       <h2><span class="number">02</span>Nuestras propuestas agénticas</h2>
       <p class="section-lead">Para cada sentencia, imaginamos qué haría un agente autónomo: qué datos consultaría, qué decisiones tomaría y cuándo pediría intervención humana.</p>
       
@@ -68,47 +81,59 @@
     </section>
 
     <!-- SECCIÓN 03: LOS FLUJOS (DIAGRAMAS) -->
-    <section>
+    <section id="flujos">
       <h2><span class="number">03</span>Los dos flujos agénticos</h2>
-      <p class="section-lead">Cada propuesta se representa con un diagrama de flujo. Podés hacer clic en los botones para resaltar un camino específico y ver los pasos detallados.</p>
+      <p class="section-lead">Cada propuesta se representa con un diagrama de flujo. Podés hacer clic en los botones para resaltar un camino específico y ver los pasos detallados. Los bordes y las flechas punteados marcan decisiones del grupo que la sentencia no define.</p>
       
       <!-- DIAGRAMA 1: REGLA DE MENORES -->
-      <div class="flow">
+      <div class="flow" id="flujo-1">
         <h3 class="flow-title">Flujo 1: Regla de incorporación de menores</h3>
         <p class="flow-intro">Una persona menor de edad solo puede unirse a un grupo si su tutor lo autoriza.</p>
         
         <div class="picker">
-          <div class="seg" id="seg1" role="radiogroup" aria-label="Camino a resaltar">
-            <button type="button" role="radio" aria-checked="true" data-s="all" class="seg-btn">Todos los caminos</button>
-            <button type="button" role="radio" aria-checked="false" data-s="adult" class="seg-btn">Mayor de edad</button>
-            <button type="button" role="radio" aria-checked="false" data-s="mok" class="seg-btn">Menor con autorización</button>
-            <button type="button" role="radio" aria-checked="false" data-s="mno" class="seg-btn">Menor sin autorización</button>
+          <div class="seg" id="seg1" role="group" aria-label="Camino a resaltar">
+            <button type="button" aria-pressed="true" data-s="all" class="seg-btn">Todos los caminos</button>
+            <button type="button" aria-pressed="false" data-s="adult" class="seg-btn">Mayor de edad</button>
+            <button type="button" aria-pressed="false" data-s="mok" class="seg-btn">Menor con autorización</button>
+            <button type="button" aria-pressed="false" data-s="mno" class="seg-btn">Menor sin autorización</button>
           </div>
           <ol class="steps" id="steps1" aria-live="polite"></ol>
         </div>
         
         <div class="panel" id="panel1" data-scn="all">
-          <svg viewBox="0 0 780 460" role="img" aria-label="Se pregunta si es menor de edad. Si no lo es, puede avanzar. Si lo es, se pregunta si tiene autorización del tutor: con autorización avanza, sin ella se bloquea la incorporación al grupo.">
+          <svg viewBox="0 0 780 460" role="img" aria-label="Se pregunta si es menor de edad. Si no lo es, puede avanzar. Si lo es, se pregunta si tiene autorización del tutor: con autorización avanza, sin ella se bloquea la incorporación al grupo, y si el tutor reclama haber autorizado el caso pasa a revisión humana con soporte.">
             <defs><marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>
             <path data-r="adult" d="M270 80H130V299" marker-end="url(#ar1)"/>
             <path data-r="mok mno" d="M380 130V250H447" marker-end="url(#ar1)"/>
             <path data-r="mok" d="M560 300V330H228" marker-end="url(#ar1)"/>
             <path data-r="mno" d="M670 250H700V379" marker-end="url(#ar1)"/>
+            <path data-r="mno" class="dashed" d="M540 410H422" marker-end="url(#ar1)"/>
             <text data-r="adult" x="200" y="71" text-anchor="middle">NO</text>
             <text data-r="mok mno" x="392" y="196">SÍ</text>
             <text data-r="mok" x="574" y="323">SÍ</text>
             <text data-r="mno" x="684" y="242">NO</text>
+            <text data-r="mno" x="481" y="402" text-anchor="middle">reclamo del tutor</text>
             <g data-r="adult mok mno"><polygon points="270,80 380,30 490,80 380,130"/>
               <text class="decision-label" x="380" y="77">¿Es menor</text><text class="decision-label" x="380" y="95">de edad?</text></g>
             <g data-r="mok mno"><polygon points="450,250 560,200 670,250 560,300"/>
               <text class="decision-label" x="560" y="247">¿Tiene autorización</text><text class="decision-label" x="560" y="265">del tutor?</text></g>
-            <g data-r="adult mok"><rect class="allowed" x="35" y="302" width="190" height="56" rx="12"/>
+            <g data-r="adult mok"><rect class="allowed gd" x="35" y="302" width="190" height="56" rx="12"/>
               <text class="allowed-label" x="130" y="335">✓ Permitir avanzar</text></g>
             <g data-r="mno"><rect class="blocked" x="540" y="382" width="200" height="56" rx="12"/>
               <text class="blocked-label" x="640" y="407">✕ Bloquear incorporación</text><text class="blocked-label" x="640" y="424">al grupo</text></g>
+            <g data-r="mno"><rect class="human gd" x="235" y="382" width="184" height="56" rx="12"/>
+              <text class="human-label" x="327" y="407">Revisión humana</text><text class="human-label" x="327" y="424">soporte al cliente</text></g>
           </svg>
         </div>
         
+        <div class="legend" aria-label="Leyenda del diagrama">
+          <span><i class="sw sw-dec"></i>Decisión</span>
+          <span><i class="sw sw-ok"></i>Habilita o permite</span>
+          <span><i class="sw sw-no"></i>Detiene o bloquea</span>
+          <span><i class="sw sw-hum"></i>Revisión humana</span>
+          <span><i class="sw sw-gd"></i>Punteado: decisión del grupo que la sentencia no define</span>
+        </div>
+
         <details>
           <summary>Ver detalles técnicos del Flujo 1</summary>
           <div class="detail-body">
@@ -117,56 +142,74 @@
             <p><strong>Acción:</strong> Si es mayor o menor con autorización: permitir avanzar. Si es menor sin autorización: bloquear incorporación al grupo.</p>
             <p><strong>Resultado:</strong> El usuario avanza al siguiente paso o se mantiene bloqueada su incorporación a la comunidad de viaje.</p>
             <p><strong>Caso límite / Intervención humana:</strong> Si el tutor afirma haber firmado pero el sistema no refleja la autorización, el agente deriva la solicitud a revisión manual con soporte al cliente para verificar la documentación física o digital.</p>
+            <p><strong>Decisiones del grupo (la sentencia no las define):</strong> permitir avanzar en los demás casos, el mensaje que indica cómo subir el permiso y la revisión humana ante el reclamo del tutor. La sentencia solo establece que se mantiene bloqueada la incorporación del menor sin autorización.</p>
           </div>
         </details>
       </div>
       
       <!-- DIAGRAMA 2: VERIFICACIÓN Y CONFIRMACIÓN -->
-      <div class="flow">
+      <div class="flow" id="flujo-2">
         <h3 class="flow-title">Flujo 2: Verificación previa a la confirmación</h3>
         <p class="flow-intro">El paso de confirmación personal solo se habilita si los datos están verificados y, en el caso de menores, si hay autorización del tutor.</p>
         
         <div class="picker">
-          <div class="seg" id="seg2" role="radiogroup" aria-label="Camino a resaltar">
-            <button type="button" role="radio" aria-checked="true" data-s="all" class="seg-btn">Todos los caminos</button>
-            <button type="button" role="radio" aria-checked="false" data-s="nov" class="seg-btn">Datos sin verificar</button>
-            <button type="button" role="radio" aria-checked="false" data-s="adult" class="seg-btn">Mayor de edad</button>
-            <button type="button" role="radio" aria-checked="false" data-s="mok" class="seg-btn">Menor con autorización</button>
-            <button type="button" role="radio" aria-checked="false" data-s="mno" class="seg-btn">Menor sin autorización</button>
+          <div class="seg" id="seg2" role="group" aria-label="Camino a resaltar">
+            <button type="button" aria-pressed="true" data-s="all" class="seg-btn">Todos los caminos</button>
+            <button type="button" aria-pressed="false" data-s="nov" class="seg-btn">Datos sin verificar</button>
+            <button type="button" aria-pressed="false" data-s="adult" class="seg-btn">Mayor de edad</button>
+            <button type="button" aria-pressed="false" data-s="mok" class="seg-btn">Menor con autorización</button>
+            <button type="button" aria-pressed="false" data-s="mno" class="seg-btn">Menor sin autorización</button>
           </div>
           <ol class="steps" id="steps2" aria-live="polite"></ol>
         </div>
         
         <div class="panel" id="panel2" data-scn="all">
-          <svg viewBox="0 0 800 620" role="img" aria-label="Si el trayecto, la identidad y la edad no están verificados, se detiene el proceso y se solicita revisión de datos. Si lo están, se pregunta si el usuario es mayor de edad: si lo es, se habilita la confirmación personal. Si no, se pregunta por la autorización del tutor: con ella se habilita la confirmación personal, sin ella se detiene el paso de confirmación.">
+          <svg viewBox="0 0 800 670" role="img" aria-label="Si el trayecto, la identidad y la edad no están verificados, se detiene el proceso y se solicita revisión de datos; si falla el GPS o los datos no coinciden, un moderador humano revisa el caso. Si están verificados, se pregunta si el usuario es mayor de edad: si lo es, se habilita la confirmación personal. Si no, se pregunta por la autorización del tutor: con ella se habilita la confirmación personal, sin ella se detiene el paso de confirmación.">
             <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>
             <path data-r="nov" d="M320 80H477" marker-end="url(#ar2)"/>
-            <path data-r="adult mok mno" d="M200 132V195" marker-end="url(#ar2)"/>
-            <path data-r="adult" d="M320 250H477" marker-end="url(#ar2)"/>
-            <path data-r="mok mno" d="M200 302V365" marker-end="url(#ar2)"/>
-            <path data-r="mok" d="M320 420H620V285" marker-end="url(#ar2)"/>
-            <path data-r="mno" d="M200 472V517" marker-end="url(#ar2)"/>
+            <path data-r="nov" class="dashed" d="M625 112V147" marker-end="url(#ar2)"/>
+            <path data-r="adult mok mno" d="M200 132V245" marker-end="url(#ar2)"/>
             <text data-r="nov" x="400" y="72" text-anchor="middle">NO</text>
-            <text data-r="adult mok mno" x="212" y="170">SÍ</text>
-            <text data-r="adult" x="400" y="242" text-anchor="middle">SÍ</text>
-            <text data-r="mok mno" x="212" y="340">NO</text>
-            <text data-r="mok" x="400" y="412" text-anchor="middle">SÍ</text>
-            <text data-r="mno" x="212" y="500">NO</text>
+            <text data-r="nov" x="637" y="134">falla de GPS o datos</text>
+            <text data-r="adult mok mno" x="212" y="195">SÍ</text>
+
             <g data-r="nov adult mok mno"><polygon points="80,80 200,28 320,80 200,132"/>
               <text class="decision-label" x="200" y="77">¿Trayecto, identidad</text><text class="decision-label" x="200" y="95">y edad verificados?</text></g>
-            <g data-r="adult mok mno"><polygon points="80,250 200,198 320,250 200,302"/>
-              <text class="decision-label" x="200" y="247">¿El usuario es</text><text class="decision-label" x="200" y="265">mayor de edad?</text></g>
-            <g data-r="mok mno"><polygon points="80,420 200,368 320,420 200,472"/>
-              <text class="decision-label" x="200" y="417">¿Tiene autorización</text><text class="decision-label" x="200" y="435">del tutor?</text></g>
-            <g data-r="nov"><rect class="blocked" x="480" y="48" width="290" height="64" rx="12"/>
+            <g data-r="nov"><rect class="blocked gd" x="480" y="48" width="290" height="64" rx="12"/>
               <text class="blocked-label" x="625" y="77">✕ Detener proceso</text><text class="blocked-label" x="625" y="95">Solicitar revisión de datos</text></g>
-            <g data-r="adult mok"><rect class="allowed" x="480" y="218" width="290" height="64" rx="12"/>
-              <text class="allowed-label" x="625" y="247">✓ Habilitar paso de</text><text class="allowed-label" x="625" y="265">confirmación personal</text></g>
-            <g data-r="mno"><rect class="blocked" x="85" y="520" width="230" height="64" rx="12"/>
-              <text class="blocked-label" x="200" y="549">✕ Detener paso</text><text class="blocked-label" x="200" y="567">de confirmación</text></g>
+            <g data-r="nov"><rect class="human gd" x="480" y="150" width="290" height="56" rx="12"/>
+              <text class="human-label" x="625" y="175">Revisión humana</text><text class="human-label" x="625" y="192">moderador aprueba el punto</text></g>
+
+            <g transform="translate(0 50)">
+              <path data-r="adult" d="M320 250H477" marker-end="url(#ar2)"/>
+              <path data-r="mok mno" d="M200 302V365" marker-end="url(#ar2)"/>
+              <path data-r="mok" d="M320 420H620V285" marker-end="url(#ar2)"/>
+              <path data-r="mno" d="M200 472V517" marker-end="url(#ar2)"/>
+              <text data-r="adult" x="400" y="242" text-anchor="middle">SÍ</text>
+              <text data-r="mok mno" x="212" y="340">NO</text>
+              <text data-r="mok" x="400" y="412" text-anchor="middle">SÍ</text>
+              <text data-r="mno" x="212" y="500">NO</text>
+
+              <g data-r="adult mok mno"><polygon points="80,250 200,198 320,250 200,302"/>
+                <text class="decision-label" x="200" y="247">¿El usuario es</text><text class="decision-label" x="200" y="265">mayor de edad?</text></g>
+              <g data-r="mok mno"><polygon points="80,420 200,368 320,420 200,472"/>
+                <text class="decision-label" x="200" y="417">¿Tiene autorización</text><text class="decision-label" x="200" y="435">del tutor?</text></g>
+              <g data-r="adult mok"><rect class="allowed" x="480" y="218" width="290" height="64" rx="12"/>
+                <text class="allowed-label" x="625" y="247">✓ Habilitar paso de</text><text class="allowed-label" x="625" y="265">confirmación personal</text></g>
+              <g data-r="mno"><rect class="blocked gd" x="85" y="520" width="230" height="64" rx="12"/>
+                <text class="blocked-label" x="200" y="549">✕ Detener paso</text><text class="blocked-label" x="200" y="567">de confirmación</text></g>
+            </g>
           </svg>
         </div>
         
+        <div class="legend" aria-label="Leyenda del diagrama">
+          <span><i class="sw sw-dec"></i>Decisión</span>
+          <span><i class="sw sw-ok"></i>Habilita o permite</span>
+          <span><i class="sw sw-no"></i>Detiene o bloquea</span>
+          <span><i class="sw sw-hum"></i>Revisión humana</span>
+          <span><i class="sw sw-gd"></i>Punteado: decisión del grupo que la sentencia no define</span>
+        </div>
+
         <details>
           <summary>Ver detalles técnicos del Flujo 2</summary>
           <div class="detail-body">
@@ -175,15 +218,18 @@
             <p><strong>Acción:</strong> Habilitar el paso de confirmación personal o detener el proceso solicitando revisión según corresponda.</p>
             <p><strong>Resultado:</strong> El usuario puede confirmar su viaje y asegurar su lugar, o se le indica corregir los datos faltantes.</p>
             <p><strong>Caso límite / Intervención humana:</strong> Si falta la verificación del trayecto por fallas de GPS o discrepancia de datos cartográficos, el agente suspende la habilitación automática y requiere que un moderador humano apruebe el punto de encuentro manualmente.</p>
+            <p><strong>Decisiones del grupo (la sentencia no las define):</strong> detener el proceso y solicitar revisión de datos cuando falta una verificación, detener el paso de confirmación para una persona menor sin autorización y la revisión humana ante fallas de GPS. La sentencia solo establece cuándo se habilita la confirmación personal.</p>
           </div>
         </details>
       </div>
     </section>
 
+    </main>
+
     <footer>
       <p><strong>Hallows Code</strong> · IFTS 29 · Desarrollo de Sistemas Web (Front End) · 2° Cuatrimestre 2026</p>
       <p>TP3: Dos sentencias, dos soluciones · Startup asignada: GoTogether</p>
-      <p><a href="https://github.com/mendez-daniela/tp3-gotogether" target="_blank">Ver repositorio en GitHub</a></p>
+      <p><a href="https://github.com/mendez-daniela/tp3-gotogether" target="_blank" rel="noopener noreferrer">Ver repositorio en GitHub</a></p>
     </footer>
   </div>
 
@@ -204,14 +250,14 @@
       all: ['Elige un camino para ver sus pasos.'],
       adult: ['<b>¿Es menor de edad?</b> No.', '<b>Resultado:</b> permitir avanzar. No se pide autorización.'],
       mok: ['<b>¿Es menor de edad?</b> Sí.', '<b>¿Tiene autorización del tutor?</b> Sí.', '<b>Resultado:</b> permitir avanzar.'],
-      mno: ['<b>¿Es menor de edad?</b> Sí.', '<b>¿Tiene autorización del tutor?</b> No.', '<b>Resultado:</b> bloquear la incorporación al grupo.']
+      mno: ['<b>¿Es menor de edad?</b> Sí.', '<b>¿Tiene autorización del tutor?</b> No.', '<b>Resultado:</b> bloquear la incorporación al grupo.', '<b>Excepción:</b> si el tutor reclama haber autorizado, el caso pasa a revisión humana con soporte (decisión del grupo).']
     };
     function setScn1(s) {
       panel1.setAttribute('data-scn', s);
       steps1.innerHTML = texts1[s].map(function (t) { return '<li>' + t + '</li>'; }).join('');
       steps1.classList.toggle('show-all', s === 'all');
       document.querySelectorAll('#seg1 button').forEach(function (b) {
-        b.setAttribute('aria-checked', b.getAttribute('data-s') === s ? 'true' : 'false');
+        b.setAttribute('aria-pressed', b.getAttribute('data-s') === s ? 'true' : 'false');
       });
     }
     document.getElementById('seg1').addEventListener('click', function (e) {
@@ -224,7 +270,7 @@
     var Q1 = '<b>¿Trayecto, identidad y edad verificados?</b> ';
     var texts2 = {
       all: ['Elige un camino para ver sus pasos.'],
-      nov: [Q1 + 'No.', '<b>Resultado:</b> detener el proceso y solicitar revisión de datos.'],
+      nov: [Q1 + 'No.', '<b>Resultado:</b> detener el proceso y solicitar revisión de datos.', '<b>Excepción:</b> si falla el GPS o los datos no coinciden, un moderador revisa y aprueba el punto de encuentro (decisión del grupo).'],
       adult: [Q1 + 'Sí.', '<b>¿El usuario es mayor de edad?</b> Sí.', '<b>Resultado:</b> habilitar el paso de confirmación personal.'],
       mok: [Q1 + 'Sí.', '<b>¿El usuario es mayor de edad?</b> No.', '<b>¿Tiene autorización del tutor?</b> Sí.', '<b>Resultado:</b> habilitar el paso de confirmación personal.'],
       mno: [Q1 + 'Sí.', '<b>¿El usuario es mayor de edad?</b> No.', '<b>¿Tiene autorización del tutor?</b> No.', '<b>Resultado:</b> detener el paso de confirmación.']
@@ -234,7 +280,7 @@
       steps2.innerHTML = texts2[s].map(function (t) { return '<li>' + t + '</li>'; }).join('');
       steps2.classList.toggle('show-all', s === 'all');
       document.querySelectorAll('#seg2 button').forEach(function (b) {
-        b.setAttribute('aria-checked', b.getAttribute('data-s') === s ? 'true' : 'false');
+        b.setAttribute('aria-pressed', b.getAttribute('data-s') === s ? 'true' : 'false');
       });
     }
     document.getElementById('seg2').addEventListener('click', function (e) {
