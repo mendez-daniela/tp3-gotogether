@@ -99,7 +99,7 @@ Juan Pablo elevó estas observaciones en un reporte formal a Daniela Méndez (op
 <a id="auditoria-qa"></a>
 ## Auditoría de Calidad (QA) y Accesibilidad Desktop
 
-**Responsable:** Juan Pablo  
+**Responsable:** Juan Pablo Duarte  
 **Entorno de prueba:** Desktop (Microsoft Edge / Google Chrome en Windows)  
 **Herramienta de asistencia IA:** Antigravity (Modelo: Gemini 3.8 Flash)
 
