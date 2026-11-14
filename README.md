@@ -13,6 +13,16 @@ GoTogether propone coordinar viajes en transporte público entre fans del K-pop.
 - [Repositorio del grupo en GitHub](https://github.com/mendez-daniela/tp3-gotogether)
 - [Landing de GoTogether publicada en Vercel](https://tp3-gotogether.vercel.app/)
 
+## Cómo ejecutar y comprobar
+
+La landing es HTML, CSS y JavaScript, sin dependencias ni paso de compilación.
+
+1. Descargar o clonar el repositorio.
+2. Abrir `index.html` en el navegador de una computadora.
+3. Probar los botones de cada diagrama y los desplegables, con clic y con teclado (`Tab`, `Enter` y `Espacio`).
+
+Antes de entregar se comprueba, desde una ventana sin sesión, que el repositorio y la landing abren y que el sitio muestra la versión final.
+
 ## Las dos soluciones propuestas
 
 | Regla | Qué haría el agente | Ejemplo para recorrer en la landing |
@@ -20,12 +30,21 @@ GoTogether propone coordinar viajes en transporte público entre fans del K-pop.
 | R3 · Incorporación al grupo | Consultaría la edad y, si la persona es menor, buscaría la autorización de su tutor. Si falta el permiso, mantendría bloqueada la incorporación e indicaría que debe presentarlo. | Compará los recorridos de un menor con autorización y de otro sin ella. Solo el primero puede avanzar. |
 | R4 · Confirmación personal | Comprobaría que el trayecto, la identidad y la edad estén verificados. Con esas tres verificaciones completas, habilitaría la confirmación personal a mayores de edad y a menores con autorización. | Una persona adulta con el trayecto sin verificar queda detenida. Con las tres verificaciones completas, puede pasar a confirmar el viaje. |
 
+### Qué define cada sentencia y qué agrega el grupo
+
+En los diagramas, los bordes y las flechas punteados marcan lo que agrega el grupo.
+
+| Regla | Lo que define la sentencia | Lo que agrega el grupo |
+| --- | --- | --- |
+| R3 · Incorporación al grupo | Si el usuario es menor de edad y no consta autorización de su tutor, se mantiene bloqueada su incorporación. | Permitir avanzar en los demás casos. Mensaje que indica cómo subir el permiso. Revisión humana con soporte cuando el tutor reclama haber autorizado. |
+| R4 · Confirmación personal | Con trayecto, identidad y edad verificados, y con mayoría de edad o autorización del tutor, se habilita la confirmación personal. | Detener el proceso y solicitar revisión de datos si falta una verificación. Detener el paso de confirmación para una persona menor sin autorización. Revisión humana de un moderador ante fallas de GPS o datos que no coinciden. |
+
 ## Integrantes y aportes
 
 | Integrante | Rol | Tarea asignada |
 | --- | --- | --- |
 | [Sol Prinzen](https://github.com/solprinz) | Análisis y lógica | Desglosar R3 y R4 en dos fichas con los datos de entrada, las condiciones, las consecuencias y una explicación de cada regla. |
-| [Lucas Sosa](https://github.com/Strashoy) | Diseño de diagramas | Convertir las fichas de Sol en dos diagramas de flujo con pasos, flechas y una excepción por flujo, indicando cuándo corresponde la intervención humana. |
+| [Lucas Eliel Sosa](https://github.com/Strashoy) | Diseño de diagramas | Convertir las fichas de Sol en dos diagramas de flujo con pasos, flechas y una excepción por flujo, indicando cuándo corresponde la intervención humana. |
 | [Daniela Méndez](https://github.com/mendez-daniela) | Operación agéntica | Usar los textos de Sol y los diagramas de Lucas para guiar al agente de programación por etapas, subir el código a GitHub y publicar la landing. |
 | [Juan Pablo](https://github.com/JPFinal) | Pruebas de calidad (QA) | Auditoría de interfaz en versión Desktop, prueba de navegación/desplegables con teclado/clic y reporte de iteraciones y mejoras de QA. ([Ver informe de auditoría ↓](#auditoria-qa)) |
 | [Alejandro Ramos](https://github.com/AleR25) | Documentación | Redactar el README, registrar los aportes y las herramientas de IA del equipo y documentar una iteración con el pedido de mejora y su resultado. |
@@ -34,8 +53,9 @@ GoTogether propone coordinar viajes en transporte público entre fans del K-pop.
 
 | Integrante | Aplicación | Modelo | Uso en el TP3 | Cambios solicitados |
 | --- | --- | --- | --- | --- |
+| Lucas Eliel Sosa | Claude Code (aplicación de escritorio de Claude) | Claude Sonnet 5.5 | Uso de las fichas de Sol y del trabajo previo como contexto. Escritura directa de los dos diagramas de flujo como SVG, sin herramientas de modelado ni conectores externos. Paleta de colores derivada del logo de la startup. Componente interactivo con selector de escenarios, en lugar de un dibujo fijo para replicar. Exportación a SVG y PNG para documentos. Ajustes de la landing según la rúbrica: logo legible, bloque asignado, decisiones del grupo, revisión humana en los diagramas y navegación. | Plan de colores a partir del logo; exploración de seis formatos para exponer la lógica y elección del diagrama de flujo; selector de escenarios con resaltado del recorrido; SVG y PNG en modo claro; páginas que abren en modo claro; logo más grande en la tarjeta de la startup; bloque asignado visible; nodo de revisión humana y marcas de decisión del grupo en los dos diagramas; índice de secciones. |
 | Alejandro Ramos | Codex | GPT-6 Astra | Revisión del README según la consigna y organización de los estilos de la landing. | Ajustar el formato del README, corregir inconsistencias y separar los estilos de `index.html` en `styles.css`. |
-| Daniela Méndez | Pendiente de confirmar | DeepSeek-V4.1-Flash-1017 | Construcción de la landing por etapas a partir de las fichas y los diagramas. | [Registrar una corrección solicitada durante el desarrollo.] |
+| Daniela Méndez | Pendiente de confirmar | DeepSeek-V4.1-Flash-1017 | Construcción de la landing por etapas a partir de las fichas y los diagramas. Actualización del código a partir del informe de QA. Publicación en GitHub y Vercel. | Primera versión de la landing con diagramas interactivos y desplegables. Restitución de la frase final de R4 («La alternativa por edad se exige junto con todas las verificaciones anteriores.») y casos límite con intervención humana en los desplegables, a partir del informe de QA. |
 | Juan Pablo | Antigravity | Gemini 3.8 Flash | Auditoría de calidad de interfaz en Desktop, diseño de matriz de pruebas, validación de accesibilidad por teclado y verificación de coherencia lógica contra la rúbrica. | Reportar e integrar casos límite de intervención humana en desplegables, restaurar texto completo de R4 y añadir estilos de foco accesible (`:focus-visible`). |
 | Sol Prinzen | Gemini (Google AI Plus) | Gemini 2.5 Pro | Organización y división de roles del equipo, desglose lógico de las sentencias R3 y R4, redacción de fichas técnicas y modelado de flujos en texto. | Organizar la división de tareas del equipo en 5 roles claros y desglosar los flujos de decisión pregunta por pregunta (en cascada) para facilitar el diseño de los diagramas. |
 
@@ -43,7 +63,7 @@ GoTogether propone coordinar viajes en transporte público entre fans del K-pop.
 
 En la primera versión de la landing, le pedimos al agente que representara las condiciones necesarias para habilitar la confirmación personal del viaje. Al revisar el diagrama, observamos que todas las ramas tenían el mismo peso visual. Esto dificultaba seguir el recorrido de una persona menor de edad con autorización de su tutor y podía dar a entender que el permiso era suficiente para pasar a la confirmación.
 
-Para mejorar la lectura, le pedimos al agente que incorporara un selector de escenarios. En la versión actual, al elegir «Menor con autorización», el diagrama resalta el camino correspondiente y atenúa las demás ramas. Así se aprecia el orden de los controles. Primero se comprueba que el trayecto, la identidad y la edad estén verificados. Luego, al tratarse de una persona menor de edad, se consulta la autorización del tutor. Si consta el permiso, se habilita el paso de confirmación personal.
+Para mejorar la lectura, se incorporó a la landing el selector de escenarios diseñado en la etapa de diagramas (ver «Del diagrama estático al componente interactivo»). En la versión actual, al elegir «Menor con autorización», el diagrama resalta el camino correspondiente y atenúa las demás ramas. Así se aprecia el orden de los controles. Primero se comprueba que el trayecto, la identidad y la edad estén verificados. Luego, al tratarse de una persona menor de edad, se consulta la autorización del tutor. Si consta el permiso, se habilita el paso de confirmación personal.
 
 ### Separación de los estilos de la landing
 
@@ -59,6 +79,18 @@ Durante la revisión de calidad en computadora (Desktop) sobre la versión publi
 3. Los botones de selección de caminos carecían de indicador de foco visible al navegar exclusivamente con teclado.
 
 Juan Pablo elevó estas observaciones en un reporte formal a Daniela Méndez (Operación Agéntica). Se instruyó al agente a actualizar `index.html` y `styles.css`, subsanando los puntos observados. Posteriormente, QA realizó una re-evaluación verificando el cierre satisfactorio de todos los casos de prueba.
+
+### Del diagrama estático al componente interactivo
+
+**Instrucción inicial.** A partir de las fichas de Sol y del trabajo previo del grupo, se pidió un diagrama de flujo por cada regla, con los colores de la startup.
+
+**Problema detectado.** Un diagrama fijo debe ser redibujado por quien arma la landing, y todas las ramas se leen con el mismo peso visual.
+
+**Pedido de mejora.** Un componente que se dibuje una sola vez y permita elegir un escenario para resaltar su recorrido.
+
+**Qué cambió y por qué.** Los diagramas se escribieron directamente como SVG, sin herramientas de modelado ni conectores externos. Cada elemento (decisiones, flechas, etiquetas y resultados) lleva un atributo que indica a qué escenarios pertenece. Al elegir un escenario, una regla de estilos atenúa lo que no corresponde y un texto enumera los pasos. No se generan gráficos nuevos: se activan y se atenúan piezas del mismo dibujo. De este modo, el mismo SVG se incorpora a la landing sin redibujarlo y el recorrido se lee de un vistazo.
+
+**Comprobación.** Se definieron los recorridos de prueba de cada flujo: tres casos para el flujo 1 y cuatro para el flujo 2, cada uno con su resultado esperado. Los diagramas se entregaron en SVG y en PNG, con una versión de la página que abre en modo claro. Luego se ajustó la landing a la rúbrica: se agrandó el logo, se mostró el bloque asignado, se dibujó la revisión humana en cada flujo y se marcó con líneas punteadas lo que agrega el grupo. Se probó en un navegador de escritorio que los botones de escenario resaltan el recorrido y actualizan los pasos, sin errores de JavaScript.
 
 ---
 

@@ -11,6 +11,7 @@
   --dec-bg: #E4E1FC; --dec-bd: #8A7CF0; --dec-tx: #2F2878;
   --ok-bg: #DDF3EA; --ok-bd: #1F9D6B; --ok-tx: #0E5A3E;
   --no-bg: #FBE1E5; --no-bd: #D63A4E; --no-tx: #8A1B2C;
+  --hum-bg: #FCE1EE; --hum-bd: #E0568F; --hum-tx: #7A1F4A;
 }
 
 :root[data-theme="dark"] {
@@ -26,6 +27,7 @@
   --dec-bg: #2B2A5A; --dec-bd: #C0B4FA; --dec-tx: #E6E3FF;
   --ok-bg: #153A2E; --ok-bd: #4FD1A1; --ok-tx: #BFF1DD;
   --no-bg: #45202A; --no-bd: #FF7B8E; --no-tx: #FFD3DA;
+  --hum-bg: #4A2036; --hum-bd: #F7A3C6; --hum-tx: #FFE3EF;
   color-scheme: dark;
 }
 
@@ -105,7 +107,7 @@ section .section-lead { color: var(--text-muted); margin-bottom: 24px; max-width
 
 .seg-btn { font-weight: 600; font-size: 0.85rem; background: var(--bg); color: var(--text); border: 1.5px solid var(--border); border-radius: 999px; padding: 6px 14px; cursor: pointer; transition: all 0.2s; }
 .seg-btn:hover { border-color: var(--primary); }
-.seg-btn[aria-checked="true"] { background: var(--primary); border-color: var(--primary); color: var(--bg); }
+.seg-btn[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--bg); }
 .seg-btn:focus-visible { outline: 2.5px solid var(--secondary); outline-offset: 2px; }
 
 [data-r] { transition: opacity 0.2s; }
@@ -157,7 +159,7 @@ footer a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px;
   padding-left: 1.2em;
   color: var(--text-muted);
   font-size: 0.92rem;
-  min-height: 3.2em;
+  min-height: 6.4em;
 }
 
 .panel {
@@ -259,10 +261,6 @@ footer a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px;
   line-height: 1.6;
 }
 
-#steps2 {
-  min-height: 4.8em;
-}
-
 footer p + p {
   margin-top: 8px;
 }
@@ -271,3 +269,53 @@ footer p + p {
   list-style: none;
   padding-left: 0;
 }
+
+/* Navegación, logo y datos de la startup */
+html { scroll-behavior: smooth; }
+section, .flow { scroll-margin-top: 16px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.index { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.index a {
+  color: var(--primary); font-weight: 700; font-size: 0.9rem; text-decoration: none;
+  padding: 6px 10px; border-radius: 8px;
+}
+.index a:hover { background: var(--surface-alt); }
+.index a:focus-visible { outline: 2.5px solid var(--primary); outline-offset: 2px; }
+
+.startup-logo {
+  flex: 0 0 auto; background: #FFFFFF; border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px;
+}
+.startup-logo img { display: block; width: 280px; max-width: 100%; height: auto; }
+
+.facts {
+  list-style: none; margin-top: 12px; display: grid; gap: 4px;
+  font-size: 0.92rem; color: var(--text-muted);
+}
+.facts strong { color: var(--text); }
+
+/* Botones de camino */
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Revisión humana y decisiones del grupo */
+.human { fill: var(--hum-bg); stroke: var(--hum-bd); stroke-width: 1.75; }
+.human-label {
+  fill: var(--hum-tx);
+  font: 700 13px Nunito, 'Segoe UI', system-ui, sans-serif;
+  text-anchor: middle;
+}
+.panel .gd { stroke-dasharray: 6 4; }
+.panel path.dashed { stroke-dasharray: 6 4; }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px;
+  font-size: 0.85rem; color: var(--text-muted);
+}
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.sw { width: 18px; height: 12px; border-radius: 3px; border: 1.75px solid; display: inline-block; flex: 0 0 auto; }
+.sw-dec { background: var(--dec-bg); border-color: var(--dec-bd); }
+.sw-ok { background: var(--ok-bg); border-color: var(--ok-bd); }
+.sw-no { background: var(--no-bg); border-color: var(--no-bd); }
+.sw-hum { background: var(--hum-bg); border-color: var(--hum-bd); }
+.sw-gd { background: transparent; border: 1.75px dashed var(--line); }
